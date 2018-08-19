@@ -1,5 +1,4 @@
 FROM alpine/git as clone
-
 WORKDIR /app
 RUN echo "Switch started"
 RUN git clone https://github.com/Sanjeev435/spring-petclinic.git
