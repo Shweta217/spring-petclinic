@@ -10,13 +10,13 @@ pipeline {
         }
       }
       steps {
-        sh 'mvn clean install'
+        sh 'mvn clean install -Dmaven.test.skip=true'
       }
-    } 
+    }
     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t mrcool/spring-petclinic:latest .'
+        sh 'docker build -t mrcool435/spring-petclinic:latest .'
       }
     }
   }
