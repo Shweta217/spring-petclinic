@@ -13,5 +13,13 @@ pipeline {
         sh 'mvn clean install -Dmaven.test.skip=true'
       }
     }
+    
+    stage('Docker Build'){
+    agent any
+      steps{
+       sh 'docker build -t Shweta217/spring.petclininc:latest .' 
+      }    
+    }
+    
       }
 }
