@@ -1,6 +1,8 @@
 #!groovy
 
 pipeline{
+  
+  def mvnHome = tool 'M2_HOME'
   agent none
   
   stages
