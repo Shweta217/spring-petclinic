@@ -12,12 +12,16 @@ pipeline{
   
   post {
         always {
-            echo 'I will always say Hello again!'
-            
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'shweta.idk@gmail.com'], [$class: 'shweta.idk@gmail.com']],
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-            
+            echo 'I will always say Hello again!'        
+          
+          steps([$class: 'Mailer',
+            recipients: "shweta.idk@gmail.com",
+            sendToIndividuals: true])
+          
+          emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+            subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+ 
+ 
         }
     }
   
