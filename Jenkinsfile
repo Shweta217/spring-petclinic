@@ -3,10 +3,13 @@
 pipeline{
 
   agent none
-        def mvnHome
-  mvnHome = tool 'M2_HOME'
+  def mvnHome
+  
   stages
   { 
+    stage('Preparation'){
+      mvnHome = tool 'M2_HOME'
+    }
 
   stage('Install'){
     agent any
