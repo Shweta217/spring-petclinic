@@ -13,9 +13,15 @@ pipeline{
   
   post { 
             
+    steps{
+      bat ('-Djava.net.preferIPv4Stack=true.')
+    }
+    
     
     success {
             echo 'I succeeeded!'
+      
+      
           
     mail to: 'shweta.idk@gmail.com',
              subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
