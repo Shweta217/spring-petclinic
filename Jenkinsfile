@@ -14,7 +14,7 @@ pipeline{
         always {
             echo 'I will always say Hello again!'        
              emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-              recipients: "shweta.idk@gmail.com",
+              replyTo: "shweta.idk@gmail.com",
                
                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
  
