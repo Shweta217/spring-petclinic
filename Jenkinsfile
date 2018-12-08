@@ -15,7 +15,7 @@ pipeline{
             always
     echo 'I will always say Hello again!'
     step([$class: 'Mailer',
-            notifyEveryStableBuild: true,
+            notifyEverySuccessBuild: true,
             recipients: "shweta.idk@gmail.com",
             sendToIndividuals: true])
           
