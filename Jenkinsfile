@@ -1,21 +1,17 @@
 #!groovy
 
-pipeline
-{
-steps
-{
-agent any{
-
-step('Install')
+pipeline{
+agent none{
+  steps{
+    step('Install')
 {
 sh 'mvn clean install -Dmaven.test.skip=true'
 }
-
-step('Build')
+    step('Build')
 {
 sh 'mvn -B'
 }
-
-}
+    
+} 
 }
 }
