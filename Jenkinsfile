@@ -9,13 +9,12 @@ pipeline{
   stage('Install'){
     agent any
     steps{
-      bat 'mvn clean install -Dmaven.test.skip=true'
+      bat(/"${mvnHome}\bin\mvn" clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true/)
 }
   }
     
     
-    
-    
+      
     
   
   }
