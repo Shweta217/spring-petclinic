@@ -17,7 +17,7 @@ pipeline{
     step([$class: 'Mailer',
             notifyEveryStableBuild: true,
             recipients: "shweta.idk@gmail.com",
-            sendToIndividuals: true]])
+            sendToIndividuals: true])
           
           }
           
