@@ -1,13 +1,13 @@
 #!groovy
 
 pipeline{
-  
+
   agent none
-  
+        def mvnHome
+  mvnHome = tool 'M2_HOME'
   stages
   { 
-    def mvnHome
-  mvnHome = tool 'M2_HOME'
+
   stage('Install'){
     agent any
     steps{
