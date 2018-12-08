@@ -14,13 +14,11 @@ pipeline{
         always {
             echo 'I will always say Hello again!'        
           
-          steps([$class: 'Mailer',
+          step([$class: 'Mailer',
             recipients: "shweta.idk@gmail.com",
             sendToIndividuals: true])
           
-          emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-            subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
- 
+         
  
         }
     }
