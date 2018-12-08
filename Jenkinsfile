@@ -1,28 +1,12 @@
 #!groovy
 
 pipeline{
-
   agent any
-  def mvnHome
-  
-  stages
-  { 
-    stage('Preparation'){
-      step{
-        mvnHome = tool 'M2_HOME'
-      }
-      
+      stages{ 
+          stage('Install'){
+              step{
+                bat(mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true)
+                }
+            }
+        }
     }
-
-  stage('Install'){
-    step{
-      bat(/"${mvnHome}\bin\mvn" clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true/)
-}
-  }
-    
-    
-      
-    
-  
-  }
-}
