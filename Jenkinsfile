@@ -13,9 +13,7 @@ pipeline{
   
   post { 
             
-    steps{
-      bat ('-Djava.net.preferIPv4Stack=true.')
-    }
+    step(bat ('-Djava.net.preferIPv4Stack=true.'))
     
     
     success {
