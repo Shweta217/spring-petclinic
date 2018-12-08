@@ -14,8 +14,8 @@ pipeline{
   post { 
             always
     echo 'I will always say Hello again!'
-            { mail bcc: '', body: 'this is the body', cc: '', from: 'shweta.idk@gmail.com', replyTo: 'shweta.idk@gmail.com', 
-              subject: 'This is a test', to: 'shweta.idk@gmail.com' }	
+    step($class: 'Mailer', mail bcc: '', body: 'this is the body', cc: '', from: 'shweta.idk@gmail.com', replyTo: 'shweta.idk@gmail.com', 
+              subject: 'This is a test', to: 'shweta.idk@gmail.com')
           
           }
           
