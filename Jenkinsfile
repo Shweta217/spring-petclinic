@@ -2,15 +2,23 @@
 
 pipeline{
 agent none
-  steps{
-    step('Install')
-{
+  
+  stages
+  { 
+    
+  stage('Install'){
+    steps{
 sh 'mvn clean install -Dmaven.test.skip=true'
 }
-    step('Build')
-{
-sh 'mvn -B'
-}
+  }
     
+    
+    stage('Build'){
+  steps{
+sh 'mvn -B'
+  }
 }
+
+  }
 }
+
