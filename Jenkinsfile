@@ -5,7 +5,7 @@ pipeline{
       stages{ 
           stage('Install'){
               step{
-                bat(mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true)
+                bat('mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true')
                 }
             }
         }
