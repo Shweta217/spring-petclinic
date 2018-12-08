@@ -2,12 +2,12 @@
 
 pipeline{
   
-  def mvnHome = tool 'M2_HOME'
   agent none
   
   stages
   { 
-    
+    def mvnHome
+  mvnHome = tool 'M2_HOME'
   stage('Install'){
     agent any
     steps{
