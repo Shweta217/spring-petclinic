@@ -1,7 +1,7 @@
 #!groovy
 
 pipeline{
-agent none
+  agent none{
   
   stages
   { 
@@ -18,7 +18,8 @@ sh 'mvn clean install -Dmaven.test.skip=true'
 sh 'mvn -B'
   }
 }
-
+    
+  }
   }
 }
 
