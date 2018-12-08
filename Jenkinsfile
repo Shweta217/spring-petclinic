@@ -8,14 +8,14 @@ pipeline{
   stages
   { 
     stage('Preparation'){
-      steps{
+      step{
         mvnHome = tool 'M2_HOME'
       }
       
     }
 
   stage('Install'){
-    steps{
+    step{
       bat(/"${mvnHome}\bin\mvn" clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true/)
 }
   }
