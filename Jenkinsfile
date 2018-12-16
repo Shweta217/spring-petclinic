@@ -26,11 +26,13 @@ pipeline{
             credentialsId: 'kamasmida',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]]) {             
+        ]]) {       
+           script{
                 container('aws') {
                     sh 'env | sort -u'
                     sh 'aws ec2 describe-instances'
                 }
+           }
  
     }
 }
