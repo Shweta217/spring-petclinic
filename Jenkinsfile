@@ -10,6 +10,8 @@ pipeline{
       stages{
         stage('Install'){
               steps{
+                println AWS_ACCESS_KEY_ID
+                 println AWS_SECRET_ACCESS_KEY
                 bat('mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true')
                 }
             }
@@ -21,7 +23,7 @@ pipeline{
     steps {
         withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'jenkins',
+            credentialsId: 'kamasmida',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]]) {             
