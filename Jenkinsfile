@@ -34,7 +34,7 @@ pipeline{
                     sh 'aws ec2 describe-instances'
                    }
                    else{
-                       bat('env | sort -u')
+                     //  bat('env | sort -u')
                      bat('aws ec2 describe-instances')
                    }
                    
