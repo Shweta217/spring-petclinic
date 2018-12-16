@@ -29,8 +29,15 @@ pipeline{
         ]]) {       
            script{
                 container('aws') {
-                    sh 'env | sort -u'
+                   if(isUnix()){
+                       sh 'env | sort -u'
                     sh 'aws ec2 describe-instances'
+                   }
+                   else{
+                       bat('env | sort -u')
+                     bat('aws ec2 describe-instances')
+                   }
+                   
                 }
            }
  
