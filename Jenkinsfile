@@ -28,7 +28,7 @@ pipeline{
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]]) {       
            script{
-                container('aws') {
+                //container('aws') {
                    if(isUnix()){
                        sh 'env | sort -u'
                     sh 'aws ec2 describe-instances'
@@ -38,7 +38,7 @@ pipeline{
                      bat('aws ec2 describe-instances')
                    }
                    
-                }
+             //   }
            }
  
     }
