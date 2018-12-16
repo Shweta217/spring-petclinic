@@ -51,7 +51,7 @@ pipeline{
         }
      
      failure{
-        printn 'SUCCESS'
+        println 'SUCCESS'
          mail to: 'mrcool435@gmail.com',
              subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
              body: "Everything is correct with ${env.BUILD_URL}"
