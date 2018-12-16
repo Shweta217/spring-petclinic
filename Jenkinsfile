@@ -40,13 +40,20 @@ pipeline{
   post { 
         
      
-   always {
+   success {
             echo 'I succeeeded!'
           
     mail to: 'shweta.idk@gmail.com',
              subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
              body: "Everything is correct with ${env.BUILD_URL}"
         }
+     
+     failure{
+        printn 'SUCCESS'
+         mail to: 'mrcool435@gmail.com',
+             subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Everything is correct with ${env.BUILD_URL}"
+     }
    
     
           }
