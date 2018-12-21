@@ -17,6 +17,7 @@ stage('Docker Build') {
         sh 'docker build -t Shweta217/spring-petclinic:latest .'
       }
     }
+	}
 	
 	
 	
