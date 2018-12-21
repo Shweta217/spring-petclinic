@@ -11,7 +11,12 @@ pipeline{
                 }
             }
         
-
+stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t Shweta217/spring-petclinic:latest .'
+      }
+    }
 	
 	
 	stage('Docker Push') {
