@@ -31,8 +31,9 @@ pipeline{
                     sh 'aws ec2 describe-instances'
                    }
                    else{
+                           withAWS(region:'us-east-1') {
                      //  bat('env | sort -u')
-                     bat('aws ec2 describe-instances')
+                                   bat('aws ec2 describe-instances')}
                    }
                    
              //   }
