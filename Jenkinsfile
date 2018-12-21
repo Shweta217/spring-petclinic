@@ -6,8 +6,7 @@ pipeline{
       stages{
         stage('Install'){
               steps{
-                println AWS_ACCESS_KEY_ID
-                 println AWS_SECRET_ACCESS_KEY
+               
                 bat('mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true')
                 }
             }
@@ -25,7 +24,8 @@ pipeline{
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
         ]])
 		
-    
+     println AWS_ACCESS_KEY_ID
+                 println AWS_SECRET_ACCESS_KEY
         }
 		}
         }
