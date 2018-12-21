@@ -21,7 +21,7 @@ pipeline{
             credentialsId: 'ecr-ecs-Cred',
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]])
+        ]]){
               script{
                  println AWS_ACCESS_KEY_ID
                  println AWS_SECRET_ACCESS_KEY
@@ -37,7 +37,7 @@ pipeline{
                    
              //   }
            }
-		
+		}
   
         }
 		}
