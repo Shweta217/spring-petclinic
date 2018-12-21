@@ -1,30 +1,38 @@
 #!groovy
 
 pipeline{
-   agent none
+   agent any
     
       stages{
         stage('Maven Install and clone Gitrepo'){
-                agent {
-        docker {
-          image 'maven:3.5.4-jdk-8-alpine'
-                
-        }
-      }
+         
           steps{
                
                 bat('mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true')
                 }   
             }
         
-stage('Docker Build') {
+
+	stage('Docker Push') {
       agent any
       steps {
-        sh 'docker build -t shweta217/spring-petclinic:latest .'
-      }
-    }
-	}
-	
+    withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'ecr-test',
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]])
+		
+     println AWS_ACCESS_KEY_ID
+                 println AWS_SECRET_ACCESS_KEY
+        }
+		}
+        }
+		
+
+
+
+
 	
 	
 		
