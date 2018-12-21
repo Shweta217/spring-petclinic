@@ -23,8 +23,13 @@ stage('Docker Build') {
 	stage('Docker Push') {
       agent any
       steps {
-      sh "\$(aws ecr get-login)"		
-		sh "docker tag spring-petclinic:latest 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
+              
+              stage 'Publish containers'
+    shouldPublish = input message: 'Publish Containers?', parameters: [[$class: 'ChoiceParameterDefinition', choices: 'yes\nno', description: '', name: 'Deploy']]
+    if(shouldPublish == "yes") {
+     echo "Publishing docker containers"
+     sh "\$(aws ecr get-login)"
+	sh "docker tag spring-petclinic:latest 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
         sh "docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
  
         }
