@@ -15,7 +15,7 @@ pipeline{
 stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t Shweta217/spring-petclinic:latest .'
+        sh 'docker build -t sanjeev435/spring-petclinic:latest .'
       }
     }
 	
@@ -35,6 +35,7 @@ stage('Docker Build') {
         sh "docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
  
         }
+		}
 		}
 		}
 		
@@ -59,6 +60,6 @@ stage('Docker Build') {
 	 }
 	 
 	 
-	 }
+	 
 	 }
 	
