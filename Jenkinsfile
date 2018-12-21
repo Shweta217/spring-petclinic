@@ -7,13 +7,13 @@ pipeline{
         stage('Install'){
                 agent {
         docker {
-          image 'maven:3.5.0'
+          image 'maven:latest'
                 
         }
       }
           steps{
                
-                bat('mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true')
+                sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'
                 }   
             }
         
