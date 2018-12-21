@@ -23,8 +23,6 @@ stage('Docker Build') {
 	stage('Docker Push') {
       agent any
       steps {
-              
-              stage 'Publish containers'
     shouldPublish = input message: 'Publish Containers?', parameters: [[$class: 'ChoiceParameterDefinition', choices: 'yes\nno', description: '', name: 'Deploy']]
     if(shouldPublish == "yes") {
      echo "Publishing docker containers"
