@@ -19,22 +19,7 @@ stage('Docker Build') {
     }
 	
 	
-	stage('Docker Push') {
-      agent any
-      steps {
-    withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'ecr-test',
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]])
-		
-     println AWS_ACCESS_KEY_ID
-                 println AWS_SECRET_ACCESS_KEY
-        }
-		}
-        }
-		
+	
 		
 		
 	post { 
