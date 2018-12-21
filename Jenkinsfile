@@ -30,7 +30,7 @@ stage('Docker Build') {
         }
 		}
 		}
-		}
+		
 		
 		
 	post { 
@@ -55,4 +55,3 @@ stage('Docker Build') {
 	 
 	 
 	 }
-	
