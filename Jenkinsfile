@@ -32,14 +32,7 @@ stage('Docker Build') {
 	post { 
         
      
-   failure {
-          //  echo 'Failing'!'
-      println 'Still failing'
-          
-    mail to: 'shweta.idk@gmail.com',
-             subject: "Un-Successful Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Need correction with ${env.BUILD_URL}"
-        }
+   
      success{
         println 'SUCCESS'
          mail to: 'shweta.idk@gmail.com',
