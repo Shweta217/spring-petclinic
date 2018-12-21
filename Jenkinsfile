@@ -23,14 +23,7 @@ stage('Docker Build') {
 	stage('Docker Push') {
       agent any
       steps {
-        withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'root',
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]]) {
-		
-		
+      sh "\$(aws ecr get-login)"		
 		sh "docker tag spring-petclinic:latest 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
         sh "docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
  
