@@ -26,7 +26,37 @@ pipeline{
     }
 			
 
-	
+	stage('Docker Push') {
+      agent any
+      steps {
+    withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'ecr-ecs-Cred',
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]){
+              script{
+                 println AWS_ACCESS_KEY_ID
+                 println AWS_SECRET_ACCESS_KEY
+				 sh "docker tag spring-petclinic:latest 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
+                 sh "docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
+                //container('aws') {
+                   if(isUnix()){
+                       sh 'env | sort -u'
+                    sh 'aws ec2 describe-instances'
+                   }
+                   else{
+                           withAWS(region:'us-east-1') {
+                     //  bat('env | sort -u')
+                                   bat('aws ec2 describe-instances')}
+                   }
+                   
+             //   }
+           }
+		}
+  
+        }
+		}
         }
 		
 
