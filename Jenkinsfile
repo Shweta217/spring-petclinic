@@ -38,8 +38,8 @@ pipeline{
               script{
                  println AWS_ACCESS_KEY_ID
                  println AWS_SECRET_ACCESS_KEY
-				 sh "docker tag spring-petclinic:latest 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
-                 sh "docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic:latest"
+				 sh "docker tag spring-petclinic:latest 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic"
+                 sh "docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic"
                 //container('aws') {
                    if(isUnix()){
                        sh 'env | sort -u'
