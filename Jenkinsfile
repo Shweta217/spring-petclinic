@@ -44,7 +44,7 @@ pipeline{
                            withAWS(region:'us-east-1'){
                        sh 'env | sort -u'
                     sh 'aws ec2 describe-instances'
-                    eval $(aws ecr get-login | sed 's|https://||')
+                    eval $(aws ecr get-login --no-include-email | sed 's|https://||')
                     sh 'docker tag shweta217/spring-petclinic 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic'
                     sh 'docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic'
                            }
