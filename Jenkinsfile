@@ -41,8 +41,10 @@ pipeline{
 				
                 //container('aws') {
                    if(isUnix()){
+                           withAWS(region:'us-east-1'){
                        sh 'env | sort -u'
                     sh 'aws ec2 describe-instances'
+                           }
                    }
                    else{
                            withAWS(region:'us-east-1') {
