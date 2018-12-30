@@ -21,12 +21,20 @@ pipeline{
 		stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t shweta217/spring-petclinic:latest .'
+        bat ('docker build -t shweta217/spring-petclinic:latest .') 
+              
+        withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_GLOBAL', passwordVariable: 'dockerHubPassword',
+                                          usernameVariable: 'dockerHubUser')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push sanjeev435/spring-petclinic'
+        }
+      
+        
       }
     }
 			
 
-	stage('Docker Push') {
+	/* stage('Docker Push') {
       agent any
       steps {
     withCredentials([[
@@ -68,7 +76,7 @@ pipeline{
 		}
         }
 		
-
+*/
 	
 	post { 
                 failure{
