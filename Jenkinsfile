@@ -16,7 +16,7 @@ pipeline{
 //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
 
 //sh 'ansible-playbook site.yml -e "@extras.json"'
-        steps{ ansiblePlaybook('site.yml') }
+        steps{ ansiblePlaybook('~/Documents/sampleAnsible/site.yml') }
                 //sh 'ansible-playbook "~/Documents/sampleAnsible/site.yml" ' }
 }
               
