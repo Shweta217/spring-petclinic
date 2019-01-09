@@ -4,7 +4,7 @@ pipeline{
 
 //node{
 //checkout scm
-        agent any
+       // agent any
         stages{
 stage ('Deploy app release')
 {
