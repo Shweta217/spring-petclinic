@@ -4,7 +4,7 @@ pipeline{
 
 node{
 checkout scm
-
+        stages{
 stage 'Deploy app release'
 {
 //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
@@ -12,7 +12,7 @@ stage 'Deploy app release'
 //sh 'ansible-playbook site.yml -e "@extras.json"'
 sh 'ansible-playbook site.yml'
 }
-}
+        }}
 
    agent any
     
