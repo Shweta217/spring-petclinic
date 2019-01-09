@@ -2,8 +2,9 @@
 
 pipeline{
 
-node{
-checkout scm
+//node{
+//checkout scm
+        agent any
         stages{
 stage ('Deploy app release')
 {
@@ -12,7 +13,8 @@ stage ('Deploy app release')
 //sh 'ansible-playbook site.yml -e "@extras.json"'
 sh 'ansible-playbook site.yml'
 }
-        }}
+        }
+        //}
 
    agent any
     
