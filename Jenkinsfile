@@ -11,7 +11,7 @@ stage ('Deploy app release')
 //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
 
 //sh 'ansible-playbook site.yml -e "@extras.json"'
-sh 'ansible-playbook site.yml'
+        steps{ sh 'ansible-playbook site.yml' }
 }
         }
         //}
