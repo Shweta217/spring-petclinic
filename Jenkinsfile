@@ -5,20 +5,20 @@ pipeline{
 //node{
 //checkout scm
        // agent any
-        stages{
-stage ('Deploy app release')
+        //}
+
+   agent any
+    
+      stages{
+              
+              stage ('Deploy app release')
 {
 //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
 
 //sh 'ansible-playbook site.yml -e "@extras.json"'
         steps{ sh 'ansible-playbook site.yml' }
 }
-        }
-        //}
-
-   agent any
-    
-      stages{
+              
         stage('Maven Install and clone Gitrepo'){
           agent {
         docker {
