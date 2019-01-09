@@ -16,12 +16,11 @@ pipeline{
 //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
 
 //sh 'ansible-playbook site.yml -e "@extras.json"'
-        steps{ //ansiblePlaybook(playbook: '${~/Documents/sampleAnsible/site.yml}') }
-                sh 'ansible-playbook  ~/Documents/sampleAnsible/site.yml ' }
+        steps{ sh 'ansible-playbook  ~/Documents/sampleAnsible/site.yml ' }
 }
               
         stage('Maven Install and clone Gitrepo'){
-          agent {
+          agent { label 'Test_Node11' }
         docker {
           image 'maven:3.5.4-jdk-8-alpine'
                 
@@ -35,7 +34,7 @@ pipeline{
         
 		
 		stage('Docker Build') {
-      agent any
+                        agent { label 'Test_Node11' }
       steps {
         sh 'docker build -t shweta217/spring-petclinic:latest .'
       }
@@ -43,7 +42,7 @@ pipeline{
 			
 
 	stage('Docker Push') {
-     agent any
+                agent { label 'Test_Node11' }
       steps {
         withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_GLOBAL', passwordVariable: 'dockerHubPassword',
                                           usernameVariable: 'dockerHubUser')]) {
