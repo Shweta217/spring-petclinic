@@ -7,7 +7,7 @@ pipeline{
        // agent any
         //}
 
-   agent any
+        agent { label 'Test_Node11' }
     
       stages{
               
