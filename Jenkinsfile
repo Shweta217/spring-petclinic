@@ -1,7 +1,20 @@
 #!groovy
 
 pipeline{
-   agent none
+
+node{
+checkout scm
+
+stage 'Deploy app release'
+{
+//writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
+
+//sh 'ansible-playbook site.yml -e "@extras.json"'
+sh 'ansible-playbook site.yml'
+}
+}
+
+   agent any
     
       stages{
         stage('Maven Install and clone Gitrepo'){
@@ -22,53 +35,20 @@ pipeline{
       agent any
       steps {
         sh 'docker build -t shweta217/spring-petclinic:latest .'
-        }
-      
-        
       }
     }
 			
 
-	 stage('Docker Push') {
-      agent any
+	stage('Docker Push') {
+     agent any
       steps {
-    withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'ecr-ecs-Cred',
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]]){
-              script{
-                 println AWS_ACCESS_KEY_ID
-                 println AWS_SECRET_ACCESS_KEY
-				
-                //container('aws') {
-                   if(isUnix()){
-                           withAWS(region:'us-east-1'){
-                       sh 'env | sort -u'
-                    sh 'aws ec2 describe-instances'
-                   // sh 'docker login -u -e none https://758048112949.dkr.ecr.us-east-1.amazonaws.com'
-                    sh 'eval $(aws ecr get-login --no-include-email)'                    
-                    sh 'docker tag shweta217/spring-petclinic 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic'
-                    sh 'docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic'
-                           }
-                   }
-                   else{
-                           withAWS(region:'us-east-1') {
-                     //  bat('env | sort -u')
-                                   bat('aws ec2 describe-instances')
-                                   bat( 'eval $(aws ecr get-login --no-include-email')                   
-                    bat( 'docker tag shweta217/spring-petclinic 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic')
-                    bat( 'docker push 758048112949.dkr.ecr.us-east-1.amazonaws.com/spring-petclinic')
-                           }
-                   }
-                   
-             //   }
-           }
-		}
-  
+        withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_GLOBAL', passwordVariable: 'dockerHubPassword',
+                                          usernameVariable: 'dockerHubUser')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push sanjeev435/spring-petclinic'
         }
-		}
+      }
+	  }
         }
 		
 
