@@ -5,7 +5,7 @@ pipeline{
 node{
 checkout scm
         stages{
-stage 'Deploy app release'
+stage ('Deploy app release')
 {
 //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
 
