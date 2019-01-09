@@ -17,7 +17,7 @@ pipeline{
 
 //sh 'ansible-playbook site.yml -e "@extras.json"'
         steps{ //ansiblePlaybook(playbook: '${~/Documents/sampleAnsible/site.yml}') }
-                sh 'ansible-playbook  '~/Documents/sampleAnsible/site.yml' ' }
+                sh 'ansible-playbook  ~/Documents/sampleAnsible/site.yml ' }
 }
               
         stage('Maven Install and clone Gitrepo'){
