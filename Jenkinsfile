@@ -25,12 +25,12 @@ pipeline{
           image 'maven:3.5.4-jdk-8-alpine'
                 
         }
-      }
+      
 	  steps{
                
                 sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'
-                }   
-            }
+          }   }
+            
         
 		
 		stage('Docker Build') {
