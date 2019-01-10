@@ -20,10 +20,10 @@ pipeline{
          stage('Maven Install and clone Gitrepo'){
                    steps{
                       parallel (
-                           sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'
-						   sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'
-						   sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'
-						   sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'
+                           "unit tests 1 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'},
+						   "unit tests 2 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'},
+						   "unit tests 3 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'},
+						   "unit tests 4 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'}
                        )
                     }   
               }
@@ -31,8 +31,8 @@ pipeline{
          stage('Docker Build') {     
              steps {
 			  parallel (
-                     sh 'docker build -t sanjeev435/spring-petclinic:latest .'
-                     sh 'docker build -t sanjeev435/spring-petclinic:latest .'
+                     "Docker Build 1 ": { sh 'docker build -t sanjeev435/spring-petclinic:latest .'}, 
+					 "Docker Build 2 ": { sh 'docker build -t sanjeev435/spring-petclinic:latest .'}
                    )
                 }
            }
