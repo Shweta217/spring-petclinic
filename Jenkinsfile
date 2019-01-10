@@ -21,10 +21,13 @@ pipeline{
               
         stage('Maven Install and clone Gitrepo'){
           //agent { label 'Test_Node11' }
+                script{
+                        
         docker {
           image 'maven:3.5.4-jdk-8-alpine'
                 
         }
+                }
       
 	  steps{
                
