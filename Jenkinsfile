@@ -50,8 +50,8 @@ pipeline{
           sh 'docker push sanjeev435/spring-petclinic'
         }
       }
-        } }
-        
+	  }
+        }
 		
 
 	
