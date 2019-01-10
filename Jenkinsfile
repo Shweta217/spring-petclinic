@@ -13,7 +13,8 @@ pipeline{
                     //sh 'ansible-playbook site.yml -e "@extras.json"'
                     //new and working
                     steps{ 
-                         sh 'ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' ' 
+                         //sh 'ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' ' 
+                            sh "ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' "
                        }
                }
               
