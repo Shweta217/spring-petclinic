@@ -19,7 +19,7 @@ pipeline{
            
 //}
               
-        stage('Maven Install and clone Gitrepo'){
+    //    stage('Maven Install and clone Gitrepo'){
           //agent { label 'Test_Node11' }
               
                         
