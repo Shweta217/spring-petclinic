@@ -35,7 +35,7 @@ pipeline{
 		stage('Docker Build') {
                      
       steps {
-        sh 'docker build -t shweta217/spring-petclinic:latest .'
+        sh 'docker build -t sanjeev435/spring-petclinic:latest .'
       }
     }
 			
@@ -46,7 +46,7 @@ pipeline{
         withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_GLOBAL', passwordVariable: 'dockerHubPassword',
                                           usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh 'docker push shweta217/spring-petclinic'
+          sh 'docker push sanjeev435/spring-petclinic'
         }
       }
 	  }
