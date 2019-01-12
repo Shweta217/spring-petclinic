@@ -3,8 +3,8 @@
 
 pipeline{
 
-       //agent { label 'Test_Node11' }
-	  agent any
+       agent { label 'Test_Node11' }
+	  //agent any
     
       stages{
               
@@ -17,14 +17,14 @@ pipeline{
                          // sh "ansible-playbook -e credentialsId: 'sshCred' '/home/shweta/Documents/sampleAnsible/site.yml' "
                             ansiblePlaybook(
                             
-                            credentialsId: 'sshCred',
+                            //credentialsId: 'sshCred',
                                     playbook: '/home/shweta/Documents/sampleAnsible/site.yml'
                             
                             )
                             
                        }
                }
-              //agent {ecsSlave}
+              agent {ecsSlave}
          stage('Maven Install and clone Gitrepo'){
                    steps{
                       parallel (
