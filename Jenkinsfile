@@ -14,7 +14,7 @@ pipeline{
                     //new and working
                     steps{ 
                          //sh 'ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' ' 
-                            sh "ansible-playbook -e ansible_python_interpreter=/usr/bin/python '/home/shweta/Documents/sampleAnsible/site.yml' "
+                            sh "ansible-playbook -e su=yes su_user=root ansible_python_interpreter=/usr/bin/python '/home/shweta/Documents/sampleAnsible/site.yml' "
                        }
                }
               
