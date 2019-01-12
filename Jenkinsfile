@@ -14,7 +14,7 @@ pipeline{
                     //new and working
                     steps{ 
                          //sh 'ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' ' 
-                            sh "ansible-playbook ANSIBLE_HOST_KEY_CHECKING=false '/home/shweta/Documents/sampleAnsible/site.yml' "
+                            sh "ansible-playbook -e ANSIBLE_HOST_KEY_CHECKING=false '/home/shweta/Documents/sampleAnsible/site.yml' "
                        }
                }
               
