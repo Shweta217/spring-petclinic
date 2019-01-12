@@ -23,9 +23,9 @@ pipeline{
                             )
                             
                        }
-               }
+         }}
               agent {ecsSlave}
-              
+        stages{
          stage('Maven Install and clone Gitrepo'){
                  input{message "Press Ok to continue"}
                    steps{
