@@ -14,7 +14,7 @@ pipeline{
                     //new and working
                     steps{ 
                          //sh 'ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' ' 
-                            sh "sudo ansible-playbook '/home/shweta/Documents/sampleAnsible/site.yml' "
+                            sh "sudo -u user ansible-playbook '/home/shweta/Documents/sampleAnsible/site.yml' "
                        }
                }
               
