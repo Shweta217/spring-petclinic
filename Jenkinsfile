@@ -3,8 +3,8 @@
 
 pipeline{
 
-       // agent { label 'Test_Node11' }
-	   agent any
+       agent { label 'Test_Node11' }
+	  // agent any
     
       stages{
               
@@ -18,7 +18,7 @@ pipeline{
                             
                        }
                }
-              
+              agent {ecsSlave}
          stage('Maven Install and clone Gitrepo'){
                    steps{
                       parallel (
@@ -49,7 +49,7 @@ pipeline{
 			}
         }
 		
-	post {
+	/*post {
           failure{
                   println "still facing"
               }
@@ -60,5 +60,5 @@ pipeline{
              subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
              body: "Everything is correct with ${env.BUILD_URL}"
           }
-     }
+     } */
   }
