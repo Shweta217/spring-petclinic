@@ -24,11 +24,11 @@ pipeline{
                             
                        }
          }
-              
+              agent { label 'ecsSlave' }
         
          stage('Maven Install and clone Gitrepo'){
                  input{message "Press Ok to continue"}
-                 agent {ecsSlave}
+                 //agent {ecsSlave}
                    steps{
                       parallel (
                            "unit tests 1 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'},
@@ -40,7 +40,7 @@ pipeline{
               }
         
          stage('Docker Build') {  
-                 agent {ecsSlave}
+               //  agent {ecsSlave}
              steps {
 			  parallel (
                      "Docker Build 1 ": { sh 'docker build -t sanjeev435/spring-petclinic:latest .'}, 
@@ -50,7 +50,7 @@ pipeline{
            }
 			
          stage('Docker Push') {
-                 agent {ecsSlave}
+               //  agent {ecsSlave}
              steps {
                      withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_GLOBAL', passwordVariable: 'dockerHubPassword',
 					 usernameVariable: 'dockerHubUser')]) {
