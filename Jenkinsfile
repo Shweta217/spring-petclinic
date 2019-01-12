@@ -18,7 +18,7 @@ pipeline{
                             ansiblePlaybook(
                             
                             credentialsId: 'sshCred',
-                                    playbook: 'site.yml'
+                                    playbook: '/home/shweta/Documents/sampleAnsible/site.yml'
                             
                             )
                             
