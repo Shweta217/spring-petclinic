@@ -25,7 +25,9 @@ pipeline{
                        }
                }
               agent {ecsSlave}
+              
          stage('Maven Install and clone Gitrepo'){
+                 input{message "Press Ok to continue"}
                    steps{
                       parallel (
                            "unit tests 1 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'},
