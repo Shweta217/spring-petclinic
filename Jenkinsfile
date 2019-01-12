@@ -14,7 +14,13 @@ pipeline{
                     //new and working
                     steps{ 
                          //sh 'ansible-playbook  '/home/shweta/Documents/sampleAnsible/site.yml' ' 
-                          sh "ansible-playbook -e credentialsId: 'sshCred' '/home/shweta/Documents/sampleAnsible/site.yml' "
+                         // sh "ansible-playbook -e credentialsId: 'sshCred' '/home/shweta/Documents/sampleAnsible/site.yml' "
+                            ansiblePlaybook(
+                            
+                            credentialsId: 'sshCred',
+                                    playbook: 'site.yml'
+                            
+                            )
                             
                        }
                }
