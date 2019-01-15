@@ -3,7 +3,7 @@
 
 pipeline{
 
-       agent { label 'Test_Node11' }
+     /*  agent { label 'Test_Node11' }
 	  //agent any
     
       stages{
@@ -23,7 +23,7 @@ pipeline{
                             )
                             
                        }
-         }  
+         }  */
               //agent { label 'ecsSlave' }
         
          stage('Maven Install and clone Gitrepo'){
