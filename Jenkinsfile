@@ -3,11 +3,11 @@
 
 pipeline{
 
-     /*  agent { label 'Test_Node11' }
+     // agent { label 'Test_Node11' }
 	  //agent any
-    
+    agent { label 'ecsSlave' }
       stages{
-              
+      /*        
        stage ('Deploy app release'){
                     //writeFile file: 'extras.json', text: "{'image_tag': '${IMAGE_TAG}', 'ecs_tasks': [${TASKS}]}"
                     //sh 'ansible-playbook site.yml -e "@extras.json"'
@@ -27,8 +27,8 @@ pipeline{
               //agent { label 'ecsSlave' }
         
          stage('Maven Install and clone Gitrepo'){
-               input{message "Press Ok to continue"}
-                 agent {label 'ecsSlave' }
+              // input{message "Press Ok to continue"}
+                // agent {label 'ecsSlave' }
                    steps{
                       parallel (
                            "unit tests 1 ": { sh 'mvn clean install -Dmaven.test.failure.ignore -Dmaven.test.skip=true'},
@@ -40,7 +40,7 @@ pipeline{
               }
         
          stage('Docker Build') {  
-                agent {label 'ecsSlave' }
+               // agent {label 'ecsSlave' }
              steps {
 			  parallel (
                      "Docker Build 1 ": { sh 'docker build -t sanjeev435/spring-petclinic:latest .'}, 
@@ -48,7 +48,7 @@ pipeline{
                    )
                 }
            }
-			
+	/*		
          stage('Docker Push') {
                agent {label 'ecsSlave' }
              steps {
@@ -71,5 +71,5 @@ pipeline{
              subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
              body: "Everything is correct with ${env.BUILD_URL}"
           }
-     } 
+     }  */
   }
